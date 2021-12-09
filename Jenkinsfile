@@ -5,7 +5,9 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh 'npm run runtests'
+                sh 'npm ci'
+                sh 'npm run cy:verify'
+                //sh 'npm run runtests'
             }
         }
     }
