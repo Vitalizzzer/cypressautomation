@@ -1,13 +1,15 @@
 pipeline {
-    agent {
-        docker { image 'cypress/included:3.2.0'}
+    agent any
+    parameters {
+        string(name: 'SPEC', defaultValue: "cypress/integration/**/**", description: "Enter the script path to execute" )
+        choice(name: 'BROWSER', ['chrome', 'firefox'], description: "Choose the browser for execution")
     }
+    
     stages {
         stage('Test') {
             steps {
-                sh 'npm ci'
-                sh 'npm run cy:verify'
-                //sh 'npm run runtests'
+                sh 'npm i'               
+                sh 'npm run runtests'
             }
         }
     }
