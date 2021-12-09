@@ -7,8 +7,7 @@ pipeline {
     
     stages {
         stage('Test') {
-            steps {
-                sh 'npn i'               
+            steps {            
                 sh 'npm run runtests'
             }
         }
